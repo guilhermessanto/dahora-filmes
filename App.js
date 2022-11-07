@@ -1,5 +1,13 @@
 import { useFonts } from "expo-font";
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import logo from "./assets/images/logo.png";
 
 const App = () => {
   const [loaded] = useFonts({
@@ -11,6 +19,7 @@ const App = () => {
   return (
     <SafeAreaView style={estilos.container}>
       <View style={estilos.viewLogo}>
+        <Image style={estilos.logo} source={logo} />
         <Text style={estilos.tituloApp}>Dá Hora Filmes</Text>
       </View>
       <View style={estilos.viewBotoes}>
@@ -37,12 +46,15 @@ const estilos = StyleSheet.create({
     textAlign: "center",
     justifyContent: "flex-end",
     alignItems: "center",
-    width: "80%",
     flex: 3,
+  },
+  logo: {
+    width: 128,
+    height: 128,
   },
   tituloApp: {
     fontFamily: "monoton",
-    fontSize: 36,
+    fontSize: 32,
     color: "#5451a6",
   },
   viewBotoes: {
