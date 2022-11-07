@@ -1,10 +1,17 @@
+import { useFonts } from "expo-font";
 import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const App = () => {
+  const [loaded] = useFonts({
+    monoton: require("./assets/fonts/Monoton-Regular.ttf"),
+  });
+
+  if (!loaded) return <Text>carregando...</Text>;
+
   return (
     <SafeAreaView style={estilos.container}>
       <View style={estilos.viewLogo}>
-        <Text>Dá Hora Filmes</Text>
+        <Text style={estilos.tituloApp}>Dá Hora Filmes</Text>
       </View>
       <View style={estilos.viewBotoes}>
         <Button title="Buscar Filmes" />
@@ -22,21 +29,23 @@ export default App;
 
 const estilos = StyleSheet.create({
   container: {
-    backgroundColor: "yellow",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
   viewLogo: {
-    backgroundColor: "green",
     textAlign: "center",
     justifyContent: "flex-end",
     alignItems: "center",
     width: "80%",
     flex: 3,
   },
+  tituloApp: {
+    fontFamily: "monoton",
+    fontSize: 36,
+    color: "#5451a6",
+  },
   viewBotoes: {
-    backgroundColor: "orange",
     width: "80%",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -44,7 +53,6 @@ const estilos = StyleSheet.create({
     alignItems: "flex-start",
   },
   viewRodape: {
-    backgroundColor: "red",
     width: "80%",
     flexDirection: "row",
     justifyContent: "space-between",
