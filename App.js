@@ -1,7 +1,7 @@
 import { useFonts } from "expo-font";
 import {
-  Button,
   Image,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import logo from "./assets/images/logo.png";
 
+const corPrimaria = "#5451a6";
 const App = () => {
   const [loaded] = useFonts({
     monoton: require("./assets/fonts/Monoton-Regular.ttf"),
@@ -23,12 +24,20 @@ const App = () => {
         <Text style={estilos.tituloApp}>Dá Hora Filmes</Text>
       </View>
       <View style={estilos.viewBotoes}>
-        <Button title="Buscar Filmes" />
-        <Button title="Favoritos" />
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Buscar Filmes</Text>
+        </Pressable>
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Favoritos</Text>
+        </Pressable>
       </View>
       <View style={estilos.viewRodape}>
-        <Button title="Privacidade" />
-        <Button title="Sobre" />
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>Privacidade</Text>
+        </Pressable>
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>Sobre</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -55,7 +64,7 @@ const estilos = StyleSheet.create({
   tituloApp: {
     fontFamily: "monoton",
     fontSize: 32,
-    color: "#5451a6",
+    color: corPrimaria,
   },
   viewBotoes: {
     width: "80%",
@@ -64,11 +73,24 @@ const estilos = StyleSheet.create({
     flex: 2,
     alignItems: "flex-start",
   },
+  botaoInicial: {
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 16,
+    backgroundColor: corPrimaria,
+  },
+  textoBotao: {
+    color: "white",
+  },
+  botaoRodape: {
+    padding: 16,
+  },
   viewRodape: {
-    width: "80%",
+    width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     flex: 0.5,
-    alignItems: "flex-start",
+    alignItems: "center",
+    backgroundColor: corPrimaria,
   },
 });
