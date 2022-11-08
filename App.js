@@ -93,6 +93,7 @@ const estilos = StyleSheet.create({
     borderWidth: 2,
     padding: 16,
     backgroundColor: corPrimaria,
+    borderRadius: 4,
   },
   textoBotao: {
     color: "white",
