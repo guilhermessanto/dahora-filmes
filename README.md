@@ -36,3 +36,14 @@ Referências:
 https://docs.expo.dev/guides/icons/
 
 https://icons.expo.fyi/
+
+## branch 03-componentes-basicos
+
+Criação dos componentes Home, FormBusca, Favoritos, Sobre e Privacidade (armazenados na pasta `src/screens`).
+
+Readequação dos recursos (imagem, fonte, estilos) entre App e Home.
+
+Adição de componente `StatusBar` do `react-native` no App.
+_Obs.: Não use o StatusBar do expo._
+
+Uso do componente `ScrollView` em Privacidade para suporte a rolagem de tela para conteúdos extensos.
