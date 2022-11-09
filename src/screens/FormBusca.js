@@ -50,7 +50,8 @@ export default FormBusca;
 
 const estilos = StyleSheet.create({
   container: {
-    padding: 20,
+    flex: 1,
+    padding: 16,
   },
   input: {
     height: 40,
