@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-const FormBusca = () => {
+const FormBusca = ({ navigation }) => {
   /* state para o filme que será buscado */
   const [filme, setFilme] = useState("");
 
@@ -26,7 +26,7 @@ const FormBusca = () => {
         [{ filme: "OK" }];
       return;
     }
-    Alert.alert("Você procurou por:", filme), [{ filme: "OK" }];
+    navigation.navigate("Resultados", { filme });
   };
 
   return (
