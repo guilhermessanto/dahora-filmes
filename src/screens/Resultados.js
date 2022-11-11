@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import api from "../services/api";
 import apiKey from "../../apiKey";
+import Loading from "../components/Loading";
 
 const Resultados = ({ route }) => {
   const { filme } = route.params;
-  const [resultados, seteResultados] = useState([]);
+  const [resultados, setResultados] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function buscarFilmes() {
@@ -18,7 +19,7 @@ const Resultados = ({ route }) => {
             include_adult: false,
           },
         });
-        seteResultados(resposta.data.results);
+        setResultados(resposta.data.results);
         setInterval(() => {
           setLoading(false);
         }, 3000);
@@ -28,8 +29,7 @@ const Resultados = ({ route }) => {
     }
     buscarFilmes();
   }, []);
-
-  if (loading) return <Text>Carregando filmes...</Text>;
+  if (loading) return <Loading />;
 
   return (
     <SafeAreaView style={estilos.container}>
