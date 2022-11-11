@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import api from "../services/api";
 import apiKey from "../../apiKey";
 import Loading from "../components/Loading";
@@ -22,7 +29,7 @@ const Resultados = ({ route }) => {
         setResultados(resposta.data.results);
         setInterval(() => {
           setLoading(false);
-        }, 3000);
+        }, 1000);
       } catch (error) {
         console.log("Deu ruim na busca da API: " + error.message);
       }
@@ -40,7 +47,17 @@ const Resultados = ({ route }) => {
         {/* Se loading for false, renderize o resultado do map */}
         {!loading &&
           resultados.map((resultado) => {
-            return <Text key={resultado.id}>{resultado.title}</Text>;
+            return (
+              <View key={resultado.id}>
+                <Image
+                  style={estilos.imagem}
+                  source={{
+                    uri: `https://image.tmdb.org/t/p/original/${resultado.poster_path}`,
+                  }}
+                />
+                <Text>{resultado.title}</Text>
+              </View>
+            );
           })}
       </View>
     </SafeAreaView>
@@ -56,5 +73,9 @@ const estilos = StyleSheet.create({
   },
   viewFilmes: {
     marginVertical: 8,
+  },
+  imagem: {
+    height: 160,
+    width: 120,
   },
 });
