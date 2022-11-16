@@ -8,6 +8,7 @@ import Home from "./src/screens/Home";
 import Privacidade from "./src/screens/Privacidade";
 import Sobre from "./src/screens/Sobre";
 import Resultados from "./src/screens/Resultados";
+import Detalhes from "./src/screens/Detalhes";
 
 const App = () => {
   /* Inicializando através de uma constante o gerenciador de navegação stack (pilha de telas) */
@@ -35,6 +36,7 @@ const App = () => {
             options={{ title: "Buscar filmes" }}
           />
           <Stack.Screen component={Resultados} name="Resultados" />
+          <Stack.Screen component={Detalhes} name="Detalhes" />
           <Stack.Screen component={Favoritos} name="Favoritos" />
           <Stack.Screen component={Privacidade} name="Privacidade" />
           <Stack.Screen component={Sobre} name="Sobre" />
