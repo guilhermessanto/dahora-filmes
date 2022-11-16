@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet } from "react-native";
+import { Button, StatusBar, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -36,10 +36,24 @@ const App = () => {
             options={{ title: "Buscar filmes" }}
           />
           <Stack.Screen component={Resultados} name="Resultados" />
-          <Stack.Screen component={Detalhes} name="Detalhes" />
           <Stack.Screen component={Favoritos} name="Favoritos" />
           <Stack.Screen component={Privacidade} name="Privacidade" />
           <Stack.Screen component={Sobre} name="Sobre" />
+          <Stack.Screen
+            component={Detalhes}
+            name="Detalhes"
+            options={({ navigation }) => {
+              return {
+                headerRight: () => (
+                  <Button
+                    title="Home"
+                    onPress={() => navigation.navigate("Home")}
+                    color="black"
+                  />
+                ),
+              };
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
