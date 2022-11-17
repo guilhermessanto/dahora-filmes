@@ -15,16 +15,15 @@ const CardFilme = ({ filme }) => {
     navigation.navigate("Detalhes", { filme });
   };
   const salvar = async () => {
-    //return Alert.alert("deu certo");
-    /* Etapas para uso do async storage
-    1) Carregamento do storage do aparelho (se houver, caso contrário retorna null)
-    2) Havendo storage prévio, transformar os dados do filme em objeto e os guardamos em uma lista(array)
-    3) Se a lista não for indefinida, vamos iniciá-la vazia
-    4) Adicionamos os dados do filme na lista (array) 
-    5) Finalmente, salvamos no storage do dispositivo
-    */
     const filmesFavoritos = await AsyncStorage.getItem("@favoritos");
     console.log(filmesFavoritos);
+    let listaDeFilmes = JSON.parse(filmesFavoritos);
+    if (!listaDeFilmes) {
+      listaDeFilmes = [];
+    }
+    listaDeFilmes.push(filme);
+    await AsyncStorage.setItem("@favoritos", JSON.stringify(listaDeFilmes));
+    Alert.alert("Favoritos", "Salvo com sucesso!");
   };
   return (
     <View style={estilos.card}>
