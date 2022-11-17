@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import fundo from "../../assets/images/sem-imagem.jpg";
 
 const Detalhes = ({ route }) => {
   /* Prop de route para axessar aos dados trafegados entre a naveção entre as telas/rotas */
@@ -19,9 +20,13 @@ const Detalhes = ({ route }) => {
       <View style={estilos.container}>
         <ImageBackground
           style={estilos.imagem}
-          source={{
-            uri: `https://image.tmdb.org/t/p/original/${filme.backdrop_path}`,
-          }}
+          source={
+            filme.backdrop_path
+              ? {
+                  uri: `https://image.tmdb.org/t/p/original/${filme.backdrop_path}`,
+                }
+              : fundo
+          }
           resizeMode="cover"
         >
           <Text style={estilos.titulo}>{filme.title}</Text>
