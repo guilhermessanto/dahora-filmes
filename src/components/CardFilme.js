@@ -16,7 +16,6 @@ const CardFilme = ({ filme }) => {
   };
   const salvar = async () => {
     const filmesFavoritos = await AsyncStorage.getItem("@favoritos");
-    console.log(filmesFavoritos);
     let listaDeFilmes = JSON.parse(filmesFavoritos);
     if (!listaDeFilmes) {
       listaDeFilmes = [];
