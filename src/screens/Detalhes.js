@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import fundo from "../../assets/images/sem-imagem.jpg";
+import { formataData } from "../utils/funcoes";
 
 const Detalhes = ({ route }) => {
   /* Prop de route para axessar aos dados trafegados entre a naveção entre as telas/rotas */
@@ -34,7 +35,8 @@ const Detalhes = ({ route }) => {
         <View style={estilos.conteudo}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text>
-              Avaliação: {filme.vote_average}| Lançamento: {filme.release_date}
+              Avaliação: {filme.vote_average}| Lançamento:
+              {formataData(filme.release_date)}
             </Text>
             <Text style={estilos.descricao}>
               {filme.overview || "Sem descrição"}
