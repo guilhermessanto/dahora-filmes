@@ -20,6 +20,16 @@ const CardFilme = ({ filme }) => {
     if (!listaDeFilmes) {
       listaDeFilmes = [];
     }
+    /* Etapa de verifivcação de filmes já existente */
+    /*  Para cada filme existente na listaDeFilmes (ja existente), vamos verigicar se o id do filme existente é igual o id do filme do card */
+
+    for (let filmeExistente in listaDeFilmes) {
+      if (listaDeFilmes[filmeExistente].id == filme.id) {
+        Alert.alert("Ops!", "Você já salvou esse filme!");
+        return;
+      }
+    }
+
     listaDeFilmes.push(filme);
     await AsyncStorage.setItem("@favoritos", JSON.stringify(listaDeFilmes));
     Alert.alert("Favoritos", "Salvo com sucesso!");
