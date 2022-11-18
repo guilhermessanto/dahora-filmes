@@ -11,9 +11,11 @@ import {
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const Favoritos = () => {
   const [listaFavoritos, setListaFavoritos] = useState([]);
+  const navigation = useNavigation();
   useEffect(() => {
     async function carregarFavoritos() {
       try {
@@ -31,6 +33,10 @@ const Favoritos = () => {
     }
     carregarFavoritos();
   }, []);
+
+  const verDetalhes = (filmeSelecionado) => {
+    navigation.navigate("Detalhes", { filme: filmeSelecionado });
+  };
 
   //
   //
@@ -91,10 +97,12 @@ const Favoritos = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
           {listaFavoritos.map((filmeFavorito, indice) => {
             return (
-              <Pressable key={filmeFavorito.id} style={estilos.itemFilme}>
-                <Text style={estilos.titulo}>
-                  {filmeFavorito.title} {indice}
-                </Text>
+              <Pressable
+                key={filmeFavorito.id}
+                style={estilos.itemFilme}
+                onPress={verDetalhes.bind(this, filmeFavorito)}
+              >
+                <Text style={estilos.titulo}>{filmeFavorito.title}</Text>
 
                 <Pressable
                   style={estilos.botaoExcluir}
