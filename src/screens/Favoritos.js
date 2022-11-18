@@ -32,9 +32,30 @@ const Favoritos = () => {
     carregarFavoritos();
   }, []);
 
+  //
+  //
   const excluirFavoritos = async () => {
-    await AsyncStorage.removeItem("@favoritos");
-    setListaFavoritos([]);
+    Alert.alert(
+      "Exluir todos?",
+      "Tem certeza que deseja excluir todos os favoritos?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => {
+            return false;
+          },
+          style: "cancel", //somente ios
+        },
+        {
+          text: "Confirmar",
+          onPress: async () => {
+            await AsyncStorage.removeItem("@favoritos");
+            setListaFavoritos([]);
+          },
+          style: "destructive",
+        },
+      ]
+    );
   };
   const excluirUmFavorito = async (indice) => {
     //Alert.alert(`Excluir filme no índice: ${indice}`);
