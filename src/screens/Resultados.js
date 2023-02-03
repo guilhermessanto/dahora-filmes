@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import api from "../services/api";
-import apiKey from "../../apiKey";
+// import apiKey from "../../apiKey";
+import { apiKey } from "../../apiKey";
 
 const Resultados = ({ route }) => {
   const { filme } = route.params;
