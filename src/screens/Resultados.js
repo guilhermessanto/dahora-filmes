@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import api from "../services/api";
-import apiKey from "../../apiKey";
+import { apiKey } from "../../apiKey";
 import Loading from "../components/Loading";
 import CardFilme from "../components/CardFilme";
 
